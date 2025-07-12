@@ -1,5 +1,10 @@
 import React, { use } from 'react'
 import { useState } from 'react';
+import ComponentOne from './components/ComponentOne';
+import ComponentTwo from './components/ComponentTwo';
+import ExampleOne from './components/ExampleOne';
+import ExampleTwo from './components/ExampleTwo';
+import ExampleThree from './components/ExampleThree';
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -35,7 +40,22 @@ const App = () => {
     setMovie({...movie, ratings: 5});
   }
 
-  
+  // ---------
+
+  const [movies, setMovies] = useState([
+    {id: 1, title: 'Spider Man', ratings: 3},
+    {id: 2, title: 'Superman', ratings: 6},
+  ])
+
+  const handleClick = () => {
+    setMovies(
+      movies.map(m => m.id === 1 ? {...movies, title: "John Wick 5"} : m)
+    )
+  }
+
+  //  share state
+
+  const [countNum, setCountNum] = useState(0);
 
   return (
     <section>
@@ -58,6 +78,24 @@ const App = () => {
       <h1>{ movie.title }</h1>
       <p>Ratings: { movie.ratings }</p>
       <button onClick={changeRating}>Change Rating</button>
+
+
+      {
+        movies.map(m => (
+          <li key={ Math.random() }>{ m.title }</li>
+        ))
+      }
+
+      <button onClick={handleClick}>Change Name</button>
+  
+
+      <ComponentOne count={countNum} onClickHandler={() => setCountNum(countNum + 1)} />
+      <ComponentTwo count={countNum} onClickHandler={() => setCountNum(countNum + 1)} />
+
+
+      <ExampleOne />
+      <ExampleTwo />
+      <ExampleThree />
 
     </section>
   );
