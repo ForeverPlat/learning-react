@@ -2,23 +2,30 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 const App = () => {
-  const [value, setValue] = useState(0);
-  const [something, setSomething] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (value > 0) {
-      console.log('call useEffect')
-      document.title = `Increment ${value}`
+    const getData = async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/todos');  
+      const data = await res.json();
+
+      if (data && data.length) setData(data);
     }
-  }, [value]);
+
+    getData();
+
+  }, [])
 
   return (
-    <div>
-      <h2>{value}</h2>
-      <button onClick={() => setValue(value + 1)}>Click Me</button>
-      <button onClick={() => setValue(something + 1)}>Increment by Something</button>
 
-    </div>
+    <ul>
+      {
+        data.map(todo => (
+          <li key={todo.id}>{todo.title}</li>
+        ))
+      }
+    </ul>
+    
   )
 }
 
