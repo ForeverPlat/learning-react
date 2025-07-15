@@ -1,27 +1,15 @@
 import React from 'react'
-import { createContext } from 'react'
-import ComponentA from './components/ComponentA'
-import ComponentB from './components/ComponentB'
-import ComponentC from './components/ComponentC'
-
-export const Data = createContext();
-export const Data1 = createContext();
+import UserProfile from './components/UserProfile';
+import UpdateUser from './components/UpdateUser';
+import { UserProvider } from './UserContext';
 
 const App = () => {
 
-  const name = 'Luqman';
-  const age = 18;
-
   return (
-    <div>
-
-      <Data.Provider value={name}>
-        <Data1.Provider value={age}>
-          <ComponentA />
-        </Data1.Provider>
-      </Data.Provider>  
-
-    </div>
+    <UserProvider>
+      <UserProfile />
+      <UpdateUser />
+    </UserProvider>
   )
 }
 
