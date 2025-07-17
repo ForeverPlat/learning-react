@@ -7,8 +7,8 @@ const Feed = () => {
   return (
     <div className='feed'>
         {
-            posts.map(({ username, profilePicture, postImage }) => (
-                <Post username={username} profilePicture={profilePicture} postImage={postImage} />
+            posts.map(({ id, username, profilePicture, postImage }) => (
+                <Post key={id} username={username} profilePicture={profilePicture} postImage={postImage} />
             ))
         }
     </div>
