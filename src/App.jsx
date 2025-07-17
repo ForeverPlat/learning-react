@@ -1,10 +1,16 @@
 import React from 'react'
-import Counter from './components/Counter'
+import useFetch from './useFetch'
 
 const App = () => {
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+
   return (
     <div>
-      <Counter />
+      {
+        data && data.map(item => {
+          return <p key={item.id}>{item.title}</p>
+        })
+      }
     </div>
   )
 }
