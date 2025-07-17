@@ -1,0 +1,48 @@
+.post {
+    width: 400px;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.post-header p {
+    font-weight: bold;
+    margin: 0;
+}
+
+.post-image-container {
+    width: 100%;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 400px;
+    display: block;
+    object-fit: cover;
+}
+
+.post-interactions {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
